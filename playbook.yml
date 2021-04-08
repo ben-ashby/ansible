@@ -1,17 +1,20 @@
 - name: Deploy Application
-  hosts: all
+  hosts: localhost
   tasks: 
     - name: Ensure app directory exists
       become: yes
       file:
         path: /etc/app
         state: directory
+
     - name: Ensure app is installed
       become: yes
       unarchive:
         remote_src: yes
         src: https://github.com/servian/TechTestApp/releases/download/v.0.6.0/TechTestApp_v.0.6.0_linux64.zip
         dest: /etc/app
+
+    - name: Ensure Service file is copied
       become: yes
       template:
         dest: /usr/lib/systemd/system/techtestapp.service
