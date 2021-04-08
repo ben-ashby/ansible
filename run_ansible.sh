@@ -7,3 +7,4 @@ sudo yum install amazon-linux-extras install ansible2 -y
 ansible — version
 
 #Run Playbook
+ansible-playbook playbook.yml
